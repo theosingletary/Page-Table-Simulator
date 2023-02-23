@@ -3,6 +3,11 @@ LEVELS is the number of page table levels.
 POBITS is the number of page offset bits.
 All integer values of LEVELS between 1 and 6 inclusive and all integer values of POBITS between 4 and 18 inclusive are supported.
 
+Instructions should be written in the main method in main.c.
+Current example instructions are included in the main method.
+
+The Makefile will create an executable "ptsim" with the "make all" command.
+
 This code could be used as a larger part of a simulated operating system or for as an instructional tool to teach students how page tables work.
 
 There are no known bugs or limitations in the code.
