@@ -1,0 +1,13 @@
+Edit config.h to change the LEVELS and POBITS.
+LEVELS is the number of page table levels.
+POBITS is the number of page offset bits.
+All integer values of LEVELS between 1 and 6 inclusive and all integer values of POBITS between 4 and 18 inclusive are supported.
+
+This code could be used as a larger part of a simulated operating system or for as an instructional tool to teach students how page tables work.
+
+There are no known bugs or limitations in the code.
+
+This code is not able to write data to data pages, only allocate data pages.
+
+Big-O analysis:
+For n levels, time and space complexity are both O(n), for both page_allocate() and translate().
