@@ -6,14 +6,13 @@
 #include "config.h"
 
 size_t ptbr = 0;
-//Returns a number where the bottom POBITS bits are all set to 1 - taken from answer key to CSO1 HW1 "bottom" answer key
+//Returns a number where the bottom POBITS bits are all set to 1
 size_t pobits_mask = (1 << (POBITS & 0x1F)) + ~(POBITS >> 5);
-//vpn_size - #bits for each VPN - https://piazza.com/class/lcrttbhw5ll3ef/post/107 
+//vpn_size - #bits for each VPN 
 size_t vpn_size = POBITS-3;
-//Returns a number where the bottom vpn_size bits are all set to 1 - taken from answer key to CSO1 HW1 "bottom" answer key
+//Returns a number where the bottom vpn_size bits are all set to 1 
 size_t levels_mask = (1 << ((POBITS-3) & 0x1F)) + ~((POBITS-3) >> 5);
 
-//consulted enh4bn, Elliot Hansen
 size_t translate(size_t va) {
     size_t ret = 0xFFFFFFFFFFFFFFFF;
     if (ptbr == 0) { //base case if no page table initialized
@@ -63,7 +62,6 @@ size_t generate_page(size_t address_to_insert, size_t align, size_t size) {
     }
 }
 
-//consulted enh4bn, Elliot Hansen
 void page_allocate(size_t va) {
     size_t page_size = pow(2, POBITS);
 
