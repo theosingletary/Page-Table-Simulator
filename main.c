@@ -4,26 +4,6 @@
 #include "mlpt.h"
 
 int main() {
-    
-    /*
-
-    //My test case - set the last one 
-    printf("ALLOCATE in 511:\n");
-    page_allocate(0x1FFFFF);
-    for (int i = 0; i < 512; ++i) {
-        //printf("i%d - 0x%16zx\n", i, *((size_t*)ptbr + i));
-    }
-
-    //printf("ALLOCATE in 510:\n");
-    //page_allocate(0x1FEFFF);
-
-    printf("TRANSLATE:\n");
-    printf("i%d - 0x%16zx\n", 511, translate(0x1FF010));
-
-    return 1;
-    
-    */
-
 
     // 0 pages have been allocated
     assert(ptbr == 0);
