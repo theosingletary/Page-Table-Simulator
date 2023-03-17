@@ -20,4 +20,4 @@ There are no known bugs or limitations in the code.
 This code is not able to write data to data pages, only allocate data pages.
 
 Big-O analysis:
-For n levels, time and space complexity are both O(n), for page_allocate(), translate(), and page_deallocate().
+For n levels, time and space complexity are both O(n), for page_allocate(), translate(), and page_deallocate(). 
