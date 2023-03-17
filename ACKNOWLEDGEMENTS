@@ -1,8 +1,0 @@
-1.
-    Consulted Elliot Hansen, enh4bn.
-
-2. 
-    bottom:
-        Set the low-order b bits of x to 1; the others to 0
-        x = (1 << (b & 0x1F)) + ~(b >> 5)
-    The above formula was taken from the 'HW1 - Bitfiddling answer' key provided to me as a CS2130 TA.
