@@ -4,6 +4,27 @@
 #include "mlpt.h"
 
 int main() {
+    
+    /*
+
+    //My test case - set the last one 
+    printf("ALLOCATE in 511:\n");
+    page_allocate(0x1FFFFF);
+    for (int i = 0; i < 512; ++i) {
+        //printf("i%d - 0x%16zx\n", i, *((size_t*)ptbr + i));
+    }
+
+    //printf("ALLOCATE in 510:\n");
+    //page_allocate(0x1FEFFF);
+
+    printf("TRANSLATE:\n");
+    printf("i%d - 0x%16zx\n", 511, translate(0x1FF010));
+
+    return 1;
+    
+    */
+
+
     // 0 pages have been allocated
     assert(ptbr == 0);
     printf(">>>>>ASSERTED ptbr == 0\n");
@@ -46,5 +67,15 @@ int main() {
     // 2 new pages allocated (now 8; 5 page table, 3 data)
     printf(">>>>>Allocation 4/4 successful\n");
 
-    printf(">>>>>>>>>>Test Successful\n");
+    assert(translate(0x456780000000) != 0xFFFFFFFFFFFFFFFF);
+    printf(">>>>>Translate 4/4 successful\n");
+
+    printf("deallocation time\n");
+    page_deallocate(0x456780000000);
+    printf("YUP, DEALLOCATE SUCCESS\n");
+
+    assert(translate(0x456780000000) == 0xFFFFFFFFFFFFFFFF);
+    printf(">>>>>Translate 4/4 successful\n");
+
+    printf(">>>>>>>>>>GREAT SUCCESS!\n");
 }

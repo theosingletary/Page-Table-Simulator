@@ -22,4 +22,13 @@ size_t generate_page(size_t address_to_insert, size_t align, size_t size);
  * already is such a page, does nothing.
  */
 void page_allocate(size_t va);
+
+typedef struct stack stack;
+
+void push (struct stack **top, size_t value);
+
+size_t pop(struct stack **top);
+
+void page_deallocate(size_t va);
+
 #endif

@@ -10,9 +10,14 @@ The Makefile will create an executable "ptsim" with the "make all" command.
 
 This code could be used as a larger part of a simulated operating system or for as an instructional tool to teach students how page tables work.
 
+Deallocate method is accessed with page_deallocate(va). Deallocation will only deallocate the pages of a virtual address that other virtual addresses are not dependent on.
+Deallocate works by going through the pages in the provided virtual address, storing each of the local ptbr's and current addresses for each level in a stack. Once at the final page, deallocate will free the pointer to the page at the current address, and rewrites the PTE at current address to zero. De-allocate then checks if other the page containing the current address has other valid entries. If there are other valid entries, that means that other allocated virtual addresses depend on the current page, and thus the current page cannot be freed. If there are other valid entries at the current page, deallocate will return. If there are no other valid entries at the current page, deallocate will backtrack to the previous level page. Deallocate retrieves the previous level page's local pbtr and current address from the stack. Deallocate iteratively repeats this process of freeing the pointer at the current address and then checking if the page has other valid entries up through the initial ptbr page table.
+If the initial page table can be freed, it is freed and ptbr is set to equal zero.
+If a virtual address that has not already been allocated is provided, deallocate does nothing and returns.
+
 There are no known bugs or limitations in the code.
 
 This code is not able to write data to data pages, only allocate data pages.
 
 Big-O analysis:
-For n levels, time and space complexity are both O(n), for both page_allocate() and translate().
+For n levels, time and space complexity are both O(n), for page_allocate(), translate(), and page_deallocate().
